@@ -8,7 +8,7 @@ import { Header } from "./components/header";
 import { colors } from "./constants/colors";
 import { Landing, Projects, Education } from "./components";
 const App: React.FC = () => {
-  const [tabValue, setTabValue] = React.useState<number>(1);
+  const [tabValue, setTabValue] = useState<number>(1);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
@@ -17,6 +17,10 @@ const App: React.FC = () => {
       createTheme({
         palette: {
           primary: {
+            main: colors.primary,
+            light: colors.secondary,
+          },
+          secondary: {
             main: colors.primary,
             light: colors.secondary,
           },

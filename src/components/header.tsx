@@ -24,16 +24,33 @@ export const Header: React.FC<HeaderProps> = ({ tabValue, onTabChange }) => {
           <Tabs
             value={tabValue}
             onChange={onTabChange}
-            aria-label="disabled tabs example"
-            sx={{
-              ".Mui-selected": {
-                color: colors.secondary,
-              },
-            }}
+            indicatorColor="primary"
+            sx={{ height: 50 }}
           >
-            <Tab label="Home" value={0} />
-            <Tab label="Projects" value={1} />
-            <Tab label="Experience/Education/Certification" value={2} />
+            <Tab
+              label="Home"
+              value={0}
+              sx={{
+                borderRadius: 10,
+                backgroundColor: tabValue === 0 ? colors.secondary : "",
+              }}
+            />
+            <Tab
+              label="Projects"
+              value={1}
+              sx={{
+                borderRadius: 10,
+                backgroundColor: tabValue === 1 ? colors.secondary : "",
+              }}
+            />
+            <Tab
+              label="Experience/Education/Certification"
+              sx={{
+                borderRadius: 10,
+                backgroundColor: tabValue === 2 ? colors.secondary : "",
+              }}
+              value={2}
+            />
           </Tabs>
         </Toolbar>
       </AppBar>
