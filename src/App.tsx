@@ -1,28 +1,29 @@
-import React, { lazy, Suspense, useContext, useMemo } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React, { useMemo, useState } from "react";
 import { createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
-import { Header } from "./components/header";
-// import { Loading } from "./components";
-import {Projects, PersonalInfo, EducationExperience, TechnicalSkills} from './routes'
-// import { useMode } from "./utils";
 
-import CircularProgress from "@mui/material/CircularProgress";
-const App = () => {
+import { Grid } from "@mui/material";
+import { Header } from "./components/header";
+import { colors } from "./constants/colors";
+import { Landing, Projects, Education } from "./components";
+const App: React.FC = () => {
+  const [tabValue, setTabValue] = React.useState<number>(1);
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setTabValue(newValue);
+  };
   const theme: any = useMemo(
     () =>
       createTheme({
         palette: {
           primary: {
-            main: "#89ABE3FF", //skyblue
-            light: "#FCF6F5FF", //white
-            contrastText: "#FCF6F5FF",
+            main: colors.primary,
+            light: colors.secondary,
           },
         },
         typography: {
           fontSize: 18,
-          fontFamily: `"Noto Sans", "serif"`,
+          fontFamily: `"Share Tech", "serif"`,
           overline: {
             fontSize: "2rem",
             fontWeight: "bold",
@@ -40,25 +41,21 @@ const App = () => {
       }),
     []
   );
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter>
-        <Header />
-        <Suspense fallback={<CircularProgress color='primary' />}>
-        <Routes>
-          <Route path="*" element={<Navigate to="/" />} />
-          <Route path="/personal-info" element={<PersonalInfo />} />
-          <Route path="/technical-skills" element={<TechnicalSkills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route
-            path="/education-and-experience"
-            element={<EducationExperience />}
-          />
-        </Routes>
-        </Suspense>
-      </BrowserRouter>
+      <Grid
+        container
+        flexDirection="column"
+        sx={{ backgroundColor: colors.secondary, height: "100%" }}
+      >
+        <Header tabValue={tabValue} onTabChange={handleChange} />
+        <Grid item container sx={{ marginTop: "70px", height: "100%" }}>
+          {tabValue === 0 && <Landing />}
+          {tabValue === 1 && <Projects />}
+          {tabValue === 1 && <Education />}
+        </Grid>
+      </Grid>
     </ThemeProvider>
   );
 };

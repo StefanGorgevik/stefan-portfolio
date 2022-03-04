@@ -1,77 +1,40 @@
-import React, { useContext, useMemo } from "react";
-import {
-  IconButton,
-  useMediaQuery,
-  useTheme,
-  Tooltip,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Box,
-  Toolbar,
-  Typography,
-  AppBar,
-  Link,
-} from "@mui/material";
-import { map } from "lodash-es";
-import { useNavigate } from "react-router";
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
 
-interface HeaderItem {
-  path: any;
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import { colors } from "../constants";
+
+interface HeaderProps {
+  tabValue: number;
+  onTabChange: (event: React.SyntheticEvent, tab: number) => unknown;
 }
-
-const HeaderItem: React.FC<HeaderItem> = ({ path }) => {
-  const navigate = useNavigate();
+export const Header: React.FC<HeaderProps> = ({ tabValue, onTabChange }) => {
   return (
-    <ListItem disablePadding >
-      <ListItemButton onClick={() => navigate(path.path)} >
-        <ListItemText  sx={{ textAlign: "center" }} primary={path.text} />
-      </ListItemButton>
-    </ListItem>
-  );
-};
-
-export const Header: React.FC = () => {
-  const paths = useMemo(() => {
-    return [
-      {
-        id: 1,
-        text: "Personal Info",
-        path: "/personal-info",
-      },
-      {
-        id: 2,
-        text: "Education/experience",
-        path: "/education-and-experience",
-      },
-      {
-        id: 3,
-        text: "Technical Skills",
-        path: "/technical-skills",
-      },
-      {
-        id: 4,
-        text: "Projects",
-        path: "/projects",
-      },
-    ];
-  }, []);
-  return (
-    <Box sx={{ flexGrow: 1, marginBottom: "80px" }}>
-      <AppBar position="fixed">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar
+        position="fixed"
+        sx={{
+          alignItems: "flex-end",
+        }}
+      >
         <Toolbar>
-          <List
+          <Tabs
+            value={tabValue}
+            onChange={onTabChange}
+            aria-label="disabled tabs example"
             sx={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              width: "100%",
+              ".Mui-selected": {
+                color: colors.secondary,
+              },
             }}
           >
-            {map(paths, (path: any) => (
-              <HeaderItem key={path.id} path={path} />
-            ))}
-          </List>
+            <Tab label="Home" value={0} />
+            <Tab label="Projects" value={1} />
+            <Tab label="Experience/Education/Certification" value={2} />
+          </Tabs>
         </Toolbar>
       </AppBar>
     </Box>
