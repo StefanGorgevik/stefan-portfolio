@@ -8,8 +8,8 @@ import { Header } from "./components/header";
 import { colors } from "./constants/colors";
 import { Landing, Projects, Education } from "./components";
 const App: React.FC = () => {
-  const [tabValue, setTabValue] = useState<number>(1);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const [tabValue, setTabValue] = useState<0 | 1 | 2>(1);
+  const handleChange = (event: React.SyntheticEvent, newValue: 0 | 1 | 2) => {
     setTabValue(newValue);
   };
   const theme: any = useMemo(
@@ -57,7 +57,7 @@ const App: React.FC = () => {
         <Grid item container sx={{ marginTop: "70px", height: "100%" }}>
           {tabValue === 0 && <Landing />}
           {tabValue === 1 && <Projects />}
-          {tabValue === 1 && <Education />}
+          {tabValue === 2 && <Education />}
         </Grid>
       </Grid>
     </ThemeProvider>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { colors } from "../constants";
 
 export const Education: React.FC = () => {
@@ -13,6 +13,8 @@ export const Education: React.FC = () => {
         margin: "0 auto",
         background: colors.primary,
         marginTop: "20px",
+        borderRadius: 10,
+
         marginBottom: "20px",
       }}
     >
