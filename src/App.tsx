@@ -1,17 +1,13 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 
-import { Grid } from "@mui/material";
-import { Header } from "./components/header";
 import { colors } from "./constants/colors";
-import { Landing, Projects, Education } from "./components";
+
+import { Layout } from "./components/layout";
+
 const App: React.FC = () => {
-  const [tabValue, setTabValue] = useState<0 | 1 | 2>(1);
-  const handleChange = (event: React.SyntheticEvent, newValue: 0 | 1 | 2) => {
-    setTabValue(newValue);
-  };
   const theme: any = useMemo(
     () =>
       createTheme({
@@ -48,18 +44,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Grid
-        container
-        flexDirection="column"
-        sx={{ backgroundColor: colors.secondary, height: "100%" }}
-      >
-        <Header tabValue={tabValue} onTabChange={handleChange} />
-        <Grid item container sx={{ marginTop: "70px", height: "100%" }}>
-          {tabValue === 0 && <Landing />}
-          {tabValue === 1 && <Projects />}
-          {tabValue === 2 && <Education />}
-        </Grid>
-      </Grid>
+      <Layout />
     </ThemeProvider>
   );
 };

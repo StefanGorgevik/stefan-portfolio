@@ -5,9 +5,10 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import { colors } from "../../constants/colors";
 import { HeaderTabs } from "../header";
+import { TabValues } from "../../types/componentTypes";
 interface MobileMenuProps {
-  tabValue: 0 | 1 | 2;
-  onTabChange: (event: React.SyntheticEvent, tab: 0 | 1 | 2) => unknown;
+  tabValue: TabValues;
+  onTabChange: (event: React.SyntheticEvent, tab: TabValues) => unknown;
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({

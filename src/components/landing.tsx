@@ -10,11 +10,11 @@ export const Landing: React.FC = () => {
       container
       sx={{
         width: "70%",
-        height: "85vh",
+        height: "65vh",
         margin: "0 auto",
         background: colors.primary,
         marginTop: "20px",
-        marginBottom: "20px",
+        marginBottom: 15,
         borderRadius: 10,
       }}
     >

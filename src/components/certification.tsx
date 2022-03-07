@@ -3,10 +3,10 @@ import { Grid } from "@mui/material";
 import { colors } from "../constants";
 import { SectionTitle } from "./ui/sectionTitle";
 
-export const Education: React.FC = () => {
+export const Certification: React.FC = () => {
   return (
     <Grid item container>
-      <SectionTitle label="Education" />
+      <SectionTitle label="Certification" />
       <Grid
         item
         container

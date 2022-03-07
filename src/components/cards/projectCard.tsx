@@ -69,7 +69,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, i }) => {
         }}
       >
         <CardContent>
-          <Typography variant="h5" textAlign="center" paddingBottom="10px">
+          <Typography
+            gutterBottom
+            variant="h5"
+            textAlign="center"
+            paddingBottom="10px"
+          >
             {project.name}
           </Typography>
           <Typography textAlign="center">{project.info}</Typography>

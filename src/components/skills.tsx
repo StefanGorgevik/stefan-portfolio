@@ -2,17 +2,17 @@ import React from "react";
 import { Grid } from "@mui/material";
 import { colors } from "../constants";
 import { SectionTitle } from "./ui/sectionTitle";
-
-export const Education: React.FC = () => {
+import { SkillCard } from "./cards/skillCard";
+import { skills } from "../data";
+export const Skills: React.FC = () => {
   return (
     <Grid item container>
-      <SectionTitle label="Education" />
+      <SectionTitle label="Skills" />
       <Grid
         item
         container
         sx={{
           width: "90%",
-          height: "85vh",
           margin: "0 auto",
           background: colors.secondary,
           marginTop: "20px",
@@ -22,7 +22,13 @@ export const Education: React.FC = () => {
         }}
         justifyContent="space-evenly"
         alignItems="center"
-      ></Grid>
+      >
+        {skills.map((skill: any, i: number) => (
+          <Grid item md={2} key={i}>
+            <SkillCard skill={skill.skill} icon={skill.icon} />
+          </Grid>
+        ))}
+      </Grid>
     </Grid>
   );
 };
