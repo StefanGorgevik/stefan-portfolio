@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, Typography, Icon } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import { colors } from "../../constants";
 import { SkillProps } from "~/types";
 
@@ -26,7 +26,6 @@ export const SkillCard: React.FC<SkillCardProps> = ({ skill }) => (
       }}
     >
       <Typography variant="body1">{skill.skill}</Typography>
-      {/* <Icon fontSize="large">{icon}</Icon> */}
       {skill.image && (
         <img
           src={skill.image}
