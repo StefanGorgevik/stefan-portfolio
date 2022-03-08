@@ -29,9 +29,8 @@ export const projects: ProjectProps[] = [
   {
     id: 4,
     name: "BodyBuildingMedia",
-    info: `The first version of a bodybuilding social media, which is a full-stack developed project, 
-        created with ReactJS, Node.js, and MongoDB. It is a responsive website and for UI, I used plain HTML and CSS. 
-        Photo upload mode was created with the help of Cloudinary and the project is deployed on Heroku.`,
+    info: `Attempt for a bodybuilding social media website, which is a full-stack developed project, 
+        created with ReactJS, Node.js, and MongoDB. `,
     url: "https://bodybuildingmedia.herokuapp.com",
     Icon: CalculateSharpIcon,
   },

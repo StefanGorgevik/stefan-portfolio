@@ -33,8 +33,13 @@ export const HeaderTabs: React.FC<HeaderProps> = ({
     <Tabs
       value={tabValue}
       onChange={onTabChange}
+      variant="scrollable"
+      scrollButtons
+      allowScrollButtonsMobile
+      aria-label="scrollable force tabs example"
       sx={{
         height: 50,
+        // overflowX: "scroll",
         // display: "flex",
         // flexDirection: "column",
         // width: "400px",
@@ -73,11 +78,11 @@ export const Header: React.FC<HeaderProps> = ({ tabValue, onTabChange }) => {
         }}
       >
         <Toolbar sx={{ width: "100%" }}>
-          {!matchesMD ? (
-            <HeaderTabs tabValue={tabValue} onTabChange={onTabChange} />
-          ) : (
+          {/* {!matchesMD ? ( */}
+          <HeaderTabs tabValue={tabValue} onTabChange={onTabChange} />
+          {/* ) : (
             <MobileMenu tabValue={tabValue} onTabChange={onTabChange} />
-          )}
+          )} */}
         </Toolbar>
       </AppBar>
     </Box>

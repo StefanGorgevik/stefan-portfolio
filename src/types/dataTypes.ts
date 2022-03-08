@@ -20,3 +20,9 @@ export interface ProjectProps {
   url: string;
   Icon: React.ReactNode;
 }
+
+export interface CertificateProps {
+  id: number;
+  title: string;
+  img: string;
+}

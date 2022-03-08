@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, Typography, Icon } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import { colors } from "../../constants";
 import { ExperienceProps } from "~/types";
 
@@ -12,11 +12,12 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
 }) => (
   <Card
     sx={{
-      minWidth: "500px  ",
+      minWidth: "300px",
       width: "100%",
-      height: "200px",
+      height: "260px",
       background: colors.primary,
       borderRadius: 10,
+      paddingBottom: 10,
     }}
   >
     <CardContent
@@ -27,17 +28,39 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
         alignItems: "center",
       }}
     >
-      <Typography variant="body1">
-        {experience.company} ({experience.position})
+      <Typography variant="h5" textAlign="center">
+        {experience.company}
+      </Typography>
+      <Typography variant="h6" textAlign="center">
+        ({experience.position})
       </Typography>
       <Typography variant="body1">
-        Period: {experience.fromTo} ({experience.length})
+        {experience.fromTo} ({experience.length})
       </Typography>
-      <Typography variant="body1">
-        Skills: {JSON.stringify(experience.skills)}{" "}
-      </Typography>
-
-      {/* <Icon fontSize="large">{icon}</Icon> */}
+    </CardContent>
+    <CardContent
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        alignItems: "center",
+        justifyItems: "center",
+        rowGap: 1,
+        width: "100%",
+      }}
+    >
+      {experience.skills.map((skill: string) => (
+        <Typography
+          variant="h6"
+          sx={{
+            backgroundColor: colors.secondary,
+            width: "150px",
+            borderRadius: 10,
+          }}
+          textAlign="center"
+        >
+          {skill}
+        </Typography>
+      ))}
     </CardContent>
   </Card>
 );

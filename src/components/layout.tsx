@@ -14,12 +14,15 @@ import {
 
 import { animateScroll as scroll } from "react-scroll";
 import { TabValues } from "../types/componentTypes";
+import { useScreenSize } from "../hooks";
 
 export const Layout: React.FC = () => {
   const [tabValue, setTabValue] = useState<TabValues>(0);
   const handleChange = (event: React.SyntheticEvent, newValue: TabValues) => {
     setTabValue(newValue);
   };
+
+  const { matchesLG } = useScreenSize();
 
   const mainRef = useRef<HTMLInputElement>(null);
   const projectsRef = useRef<HTMLInputElement>(null);
@@ -60,14 +63,14 @@ export const Layout: React.FC = () => {
     const onScroll = () => {
       var top = window.pageYOffset;
       console.log("SCROLLING", top, projectsRef);
-      if (top === projectsRef.current?.offsetTop) {
-        console.log("in", projectsRef?.current?.offsetTop);
-        return setTabValue(1);
-      }
-      if (top === skillsRef.current?.offsetTop) {
-        console.log("ENTERED", skillsRef.current?.offsetTop);
-        return setTabValue(3);
-      }
+      // if (top > 749 && top < 1680) {
+      //   console.log("in", projectsRef?.current?.offsetTop);
+      //   return setTabValue(1);
+      // }
+      // if (top > 1680 && top < 2316) {
+      //   console.log("ENTERED", skillsRef.current?.offsetTop);
+      //   return setTabValue(2);
+      // }
     };
     // clean up code
     window.removeEventListener("scroll", onScroll);
@@ -91,7 +94,7 @@ export const Layout: React.FC = () => {
         <Landing />
         <div
           style={{
-            width: "85%",
+            width: matchesLG ? "95%" : "85%",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
@@ -107,13 +110,13 @@ export const Layout: React.FC = () => {
           <div ref={skillsRef}>
             <Skills />
           </div>
-          <div ref={experienceRef}>
+          <div ref={experienceRef} style={{ width: "100%" }}>
             <Experience />
           </div>
-          <div ref={educationRef}>
+          <div ref={educationRef} style={{ width: "100%" }}>
             <Education />
           </div>
-          <div ref={certificationRef}>
+          <div ref={certificationRef} style={{ width: "100%" }}>
             <Certification />
           </div>
         </div>

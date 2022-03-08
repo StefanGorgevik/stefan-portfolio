@@ -11,6 +11,8 @@ export const CardAvatar: React.FC = () => (
       height: "500px",
       background: colors.secondary,
       borderRadius: 10,
+      display: "flex",
+      justifyContent: "center",
     }}
   >
     <CardContent
@@ -24,12 +26,12 @@ export const CardAvatar: React.FC = () => (
       <Avatar
         alt="Stefan Gorgevik"
         src={AvatarImage}
-        sx={{ width: 200, height: 200 }}
+        sx={{ width: 200, height: 200, marginBottom: 10 }}
       />
-      <Typography variant="h6" color="text.secondary" gutterBottom>
+      <Typography variant="h5" color="text.secondary" gutterBottom>
         Stefan Gorgevik
       </Typography>
-      <Typography color="text.secondary" gutterBottom variant="caption">
+      <Typography color="text.secondary" gutterBottom variant="body1">
         Software Developer
       </Typography>
     </CardContent>

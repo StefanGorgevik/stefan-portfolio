@@ -2,37 +2,43 @@ import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import { colors } from "../../constants";
 import { SkillProps } from "~/types";
+import { useScreenSize } from "../../hooks";
 
 interface SkillCardProps {
   skill: SkillProps;
 }
 
-export const SkillCard: React.FC<SkillCardProps> = ({ skill }) => (
-  <Card
-    sx={{
-      minWidth: "200px",
-      width: "200px",
-      height: "200px",
-      background: colors.primary,
-      borderRadius: 10,
-    }}
-  >
-    <CardContent
+export const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
+  const { matchesSM } = useScreenSize();
+  return (
+    <Card
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "center",
+        width: matchesSM ? " 150px" : "200px",
+        height: matchesSM ? " 150px" : "200px",
+        background: colors.primary,
+        borderRadius: 10,
       }}
     >
-      <Typography variant="body1">{skill.skill}</Typography>
-      {skill.image && (
-        <img
-          src={skill.image}
-          alt="skill"
-          style={{ width: 115, height: 115 }}
-        />
-      )}
-    </CardContent>
-  </Card>
-);
+      <CardContent
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="body1">{skill.skill}</Typography>
+        {skill.image && (
+          <img
+            src={skill.image}
+            alt="skill"
+            style={{
+              width: matchesSM ? 100 : 115,
+              height: matchesSM ? 100 : 115,
+            }}
+          />
+        )}
+      </CardContent>
+    </Card>
+  );
+};
