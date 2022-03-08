@@ -21,6 +21,7 @@ export const Layout: React.FC = () => {
     setTabValue(newValue);
   };
 
+  const mainRef = useRef<HTMLInputElement>(null);
   const projectsRef = useRef<HTMLInputElement>(null);
   const skillsRef = useRef<HTMLInputElement>(null);
   const experienceRef = useRef<HTMLInputElement>(null);
@@ -55,6 +56,26 @@ export const Layout: React.FC = () => {
     scrollToSection(tabValue);
   }, [tabValue, scrollToSection]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      var top = window.pageYOffset;
+      console.log("SCROLLING", top, projectsRef);
+      if (top === projectsRef.current?.offsetTop) {
+        console.log("in", projectsRef?.current?.offsetTop);
+        return setTabValue(1);
+      }
+      if (top === skillsRef.current?.offsetTop) {
+        console.log("ENTERED", skillsRef.current?.offsetTop);
+        return setTabValue(3);
+      }
+    };
+    // clean up code
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <Grid
       container
@@ -68,20 +89,33 @@ export const Layout: React.FC = () => {
         sx={{ marginTop: "70px", height: "100%", flexDirection: "column" }}
       >
         <Landing />
-        <div ref={projectsRef}>
-          <Projects ref={projectsRef} />
-        </div>
-        <div ref={skillsRef}>
-          <Skills />
-        </div>
-        <div ref={experienceRef}>
-          <Experience />
-        </div>
-        <div ref={educationRef}>
-          <Education />
-        </div>
-        <div ref={certificationRef}>
-          <Certification />
+        <div
+          style={{
+            width: "85%",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            rowGap: "100px",
+          }}
+          ref={mainRef}
+        >
+          <div ref={projectsRef}>
+            <Projects ref={projectsRef} />
+          </div>
+          <div ref={skillsRef}>
+            <Skills />
+          </div>
+          <div ref={experienceRef}>
+            <Experience />
+          </div>
+          <div ref={educationRef}>
+            <Education />
+          </div>
+          <div ref={certificationRef}>
+            <Certification />
+          </div>
         </div>
       </Grid>
     </Grid>

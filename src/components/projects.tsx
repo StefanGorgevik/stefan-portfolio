@@ -20,7 +20,7 @@ export const Projects: React.FC<{ ref: any }> = ({ ref }) => {
           item
           container
           sx={{
-            width: "90%",
+            width: "100%",
             margin: "0 auto",
             background: colors.secondary,
             marginTop: "20px",

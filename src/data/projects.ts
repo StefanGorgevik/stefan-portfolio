@@ -1,13 +1,5 @@
 import CalculateSharpIcon from "@mui/icons-material/CalculateSharp";
-import React from "react";
-
-export interface ProjectProps {
-  id: number;
-  name: string;
-  info: string;
-  url: string;
-  Icon: React.ReactNode;
-}
+import { ProjectProps } from "../types";
 
 export const projects: ProjectProps[] = [
   {

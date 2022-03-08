@@ -7,7 +7,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { ProjectProps } from "../../data/projects";
+import { ProjectProps } from "../../types";
 import { colors } from "../../constants";
 
 interface ProjectCardProps {

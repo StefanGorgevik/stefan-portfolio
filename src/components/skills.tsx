@@ -13,19 +13,24 @@ export const Skills: React.FC = () => {
         container
         sx={{
           width: "90%",
-          margin: "0 auto",
           background: colors.secondary,
+          margin: "0 auto",
           marginTop: "20px",
           marginBottom: "20px",
           borderRadius: 10,
           gap: 1,
         }}
-        justifyContent="space-evenly"
+        justifyContent="space-between"
         alignItems="center"
       >
         {skills.map((skill: any, i: number) => (
-          <Grid item md={2} key={i}>
-            <SkillCard skill={skill.skill} icon={skill.icon} />
+          <Grid
+            item
+            md={2}
+            key={i}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
+            <SkillCard skill={skill} />
           </Grid>
         ))}
       </Grid>
