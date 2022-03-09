@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { Grid } from "@mui/material";
-import { Landing, Projects, Education, Experience, Skills, Header } from "./";
+import { Home, Projects, Education, Experience, Skills, Header } from "./";
 
 import { animateScroll as scroll } from "react-scroll";
 import { TabValues } from "../types/componentTypes";
@@ -22,7 +22,11 @@ const getClosest = (off1: number, off2: number) => {
 export const Layout: React.FC = () => {
   const [tabValue, setTabValue] = useState<TabValues>(0);
   const [tabName, setTabName] = useState("Home");
+  const [showProjects, setShowProjects] = useState(false);
   const handleChange = (event: React.SyntheticEvent, newValue: TabValues) => {
+    if (newValue === 1) {
+      setShowProjects(true);
+    }
     setTabValue(newValue);
     setTabName(tabs[newValue]);
   };
@@ -42,10 +46,6 @@ export const Layout: React.FC = () => {
   const isEducationVisible = useOnScreen(educationRef);
 
   useEffect(() => {
-    if (window.pageYOffset < 300) {
-      setTabName("Home");
-      return;
-    }
     if (isProjectsVisible) {
       if (projectsRef.current && skillsRef.current) {
         const closest = getClosest(
@@ -54,6 +54,7 @@ export const Layout: React.FC = () => {
         );
         if (closest === projectsRef.current.offsetTop) {
           setTabName("Projects");
+          setShowProjects(true);
         }
       }
     } else if (isSkillsVisible) {
@@ -98,7 +99,8 @@ export const Layout: React.FC = () => {
           projectsRef.current.offsetTop
         );
         if (closest === homeRef.current.offsetTop) {
-          setTabName("Education");
+          setTabName("Home");
+          setShowProjects(false);
         }
       }
     }
@@ -114,6 +116,7 @@ export const Layout: React.FC = () => {
   useEffect(() => {
     let offset: number = 0;
     if (tabValue === 1 && projectsRef && projectsRef.current) {
+      setShowProjects(true);
       offset = projectsRef?.current?.offsetTop;
     } else if (tabValue === 2 && skillsRef && skillsRef.current) {
       offset = skillsRef?.current?.offsetTop;
@@ -127,6 +130,15 @@ export const Layout: React.FC = () => {
     scroll.scrollTo(offset - 70);
   }, [tabValue, projectsRef, skillsRef, experienceRef, educationRef, homeRef]);
 
+  useEffect(() => {
+    if (isHomeVisible && isProjectsVisible && window.pageYOffset < 300) {
+      setTabName("Home");
+      setShowProjects(false);
+    } else if (isHomeVisible && isProjectsVisible && window.pageYOffset > 300) {
+      setShowProjects(true);
+    }
+  }, [isHomeVisible, isProjectsVisible]);
+
   return (
     <Grid
       container
@@ -138,7 +150,7 @@ export const Layout: React.FC = () => {
         onTabChange={handleChange}
         tabName={tabName}
       />
-      <Grid item container sx={{ marginTop: "70px", flexDirection: "column" }}>
+      <Grid container sx={{ marginTop: "70px", flexDirection: "column" }}>
         <div
           style={{
             width: matchesLG ? "95%" : "85%",
@@ -153,11 +165,11 @@ export const Layout: React.FC = () => {
           ref={mainRef}
         >
           <div ref={homeRef}>
-            <Landing />
+            <Home checkItem={isHomeVisible} />
           </div>
 
           <div ref={projectsRef}>
-            <Projects checkItem={isProjectsVisible} />
+            <Projects checkItem={isProjectsVisible && showProjects} />
           </div>
           <div ref={skillsRef}>
             <Skills checkItem={isSkillsVisible} />

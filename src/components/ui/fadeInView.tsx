@@ -9,12 +9,12 @@ export const FadeInView: React.FC<{
   useEffect(() => {
     setTimeout(() => {
       setChecked(true);
-    }, 350);
+    }, 200);
   }, []);
   useEffect(() => {
     setTimeout(() => {
       setChecked(checkItem);
-    }, 350);
+    }, 200);
   }, [checkItem]);
   return (
     <Fade in={checked}>

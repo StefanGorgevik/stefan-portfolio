@@ -6,7 +6,7 @@ import { ExperienceProps } from "../types";
 import { useScreenSize } from "../hooks";
 
 export const Experience: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
-  const { matchesLG } = useScreenSize();
+  const { matchesLG, matchesMD } = useScreenSize();
 
   return (
     <FadeInView checkItem={checkItem}>
@@ -15,18 +15,20 @@ export const Experience: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           item
           container
           sx={{
-            width: matchesLG ? "100%" : "87%",
-            height: matchesLG ? "100%" : "25vh",
+            width: matchesLG ? "100%" : "94%",
             margin: "0 auto",
-            marginTop: "20px",
-            marginBottom: "20px",
             borderRadius: 10,
             gap: matchesLG ? 2 : 0.2,
           }}
           justifyContent={matchesLG ? "center" : "space-between"}
         >
           {experience.map((experience: ExperienceProps) => (
-            <Grid item md={3.5} key={experience.id}>
+            <Grid
+              item
+              md={matchesLG ? (matchesMD ? 12 : 5) : 3.8}
+              key={experience.id}
+              sx={{ width: matchesLG ? "100%" : "auto" }}
+            >
               <ExperienceCard experience={experience} />
             </Grid>
           ))}

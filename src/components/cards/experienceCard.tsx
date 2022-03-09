@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import { colors } from "../../constants";
 import { ExperienceProps } from "~/types";
-
+import { Skill } from "../index";
 interface ExperienceCardProps {
   experience: ExperienceProps;
 }
@@ -12,12 +12,10 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
 }) => (
   <Card
     sx={{
-      minWidth: "300px",
+      minWidth: "100%",
       width: "100%",
-      height: "260px",
       background: colors.secondary,
       borderRadius: 10,
-      paddingBottom: 10,
     }}
   >
     <CardContent
@@ -42,25 +40,14 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
       sx={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
-        alignItems: "center",
+        alignItems: "flex-end",
         justifyItems: "center",
         rowGap: 1,
         width: "100%",
       }}
     >
       {experience.skills.map((skill: string) => (
-        <Typography
-          key={skill}
-          variant="h6"
-          sx={{
-            backgroundColor: colors.primary,
-            width: "150px",
-            borderRadius: 10,
-          }}
-          textAlign="center"
-        >
-          {skill}
-        </Typography>
+        <Skill skill={skill} key={skill} />
       ))}
     </CardContent>
   </Card>

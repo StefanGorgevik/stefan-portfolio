@@ -2,7 +2,7 @@ import React from "react";
 
 import { Grid, Typography } from "@mui/material";
 import { colors } from "../constants";
-import { FadeInView, SectionContainer, CertificateCard } from "./index";
+import { FadeInView, SectionContainer, CertificateCard, Skill } from "./index";
 import { useScreenSize } from "../hooks";
 import { certificates } from "../data";
 import { CertificateProps } from "../types";
@@ -16,12 +16,11 @@ export const Education: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           item
           container
           sx={{
-            width: "85%",
+            width: "94%",
             height: matchesLG ? "100%" : "100%",
             padding: matchesLG ? "10px 30px" : "5px 40px",
             margin: "0 auto",
             background: colors.secondary,
-            marginTop: "20px",
             paddingBottom: "40px",
             borderRadius: 10,
             flexDirection: "column",
@@ -44,7 +43,7 @@ export const Education: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
             <Typography
               variant="body1"
               textAlign="center"
-              sx={{ maxWidth: "80%", margin: "0 auto" }}
+              sx={{ maxWidth: matchesLG ? "90%" : "80%", margin: "0 auto" }}
             >
               I have worked and understood the connection between the front-end
               and the back-end when it comes to developing a web application,
@@ -58,31 +57,30 @@ export const Education: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
             container
             sx={{
               width: "100%",
+              display: matchesLG ? "grid" : "flex",
+              gridTemplateColumns: matchesLG ? "1fr 1fr" : "1fr",
               justifyContent: "space-around",
               paddingTop: 3,
+              flexDirection: "row",
+              rowGap: 1,
+              margin: matchesLG ? "0 auto" : "auto",
             }}
           >
             {[
-              "HTML",
-              "CSS",
+              "HTML/CSS",
               "Git",
               "Javascript",
               "React JS",
               "Node.JS",
               "MongoDB",
             ].map((skill: string) => (
-              <Grid item key={skill}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    backgroundColor: colors.primary,
-                    width: "150px",
-                    borderRadius: 10,
-                  }}
-                  textAlign="center"
-                >
-                  {skill}
-                </Typography>
+              <Grid
+                item
+                md={matchesLG ? 12 : 1.7}
+                key={skill}
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
+                <Skill skill={skill} />
               </Grid>
             ))}
           </Grid>
@@ -91,23 +89,20 @@ export const Education: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           item
           container
           sx={{
-            width: "95%",
+            width: "93%",
             height: "50vh",
             margin: "0 auto",
             marginTop: "20px",
             marginBottom: "50px",
             borderRadius: 10,
-            gap: 1,
+            gap: matchesLG ? 1 : 3,
+            display: matchesLG ? "flex" : "grid",
+            gridTemplateColumns: "1fr 1fr",
           }}
           justifyContent="space-evenly"
         >
           {certificates.map((certificate: CertificateProps) => (
-            <Grid
-              sx={{ width: "100%" }}
-              item
-              key={certificate.id}
-              md={matchesLG ? 12 : 3}
-            >
+            <Grid sx={{ width: "100%" }} item key={certificate.id}>
               <CertificateCard certificate={certificate} />
             </Grid>
           ))}

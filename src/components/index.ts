@@ -1,4 +1,4 @@
-export * from "./landing";
+export * from "./home";
 export * from "./header";
 export * from "./cards/projectCard";
 export * from "./cards/skillCard";
@@ -13,3 +13,4 @@ export * from "./skills";
 export * from "./ui/fadeInView";
 export * from "./ui/sectionTitle";
 export * from "./ui/sectionContainer";
+export * from "./ui/skill";

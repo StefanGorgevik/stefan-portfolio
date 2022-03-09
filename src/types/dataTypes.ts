@@ -19,7 +19,7 @@ export interface ProjectProps {
   info: string;
   url: string;
   Icon: React.ReactNode;
-  skills?: string[];
+  skills: string[];
 }
 
 export interface CertificateProps {

@@ -1,17 +1,8 @@
-import {
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-  Typography,
-  Fade,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Card, CardContent, Typography, Fade } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { ProjectProps } from "../../types";
 import { colors } from "../../constants";
-import { SkillCard } from "../index";
+import { Skill } from "../index";
 interface ProjectCardProps {
   project: ProjectProps;
   i: number;
@@ -19,8 +10,6 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, i }) => {
   const [checked, setChecked] = useState(false);
-  const theme = useTheme();
-  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   useEffect(() => {
     let time: number = 100;
     switch (i) {
@@ -54,6 +43,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, i }) => {
   return (
     <Fade in={checked}>
       <Card
+        onClick={() => window.open(project.url)}
         sx={{
           backgroundColor: colors.secondary,
           width: "100%",
@@ -68,8 +58,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, i }) => {
             backgroundColor: "#ba9872",
             color: "#e6e2df",
           },
-          minHeight: matchesMD ? 250 : 350,
-          height: matchesMD ? "275px" : "420px",
         }}
       >
         <CardContent>
@@ -78,42 +66,22 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, i }) => {
           </Typography>
           <Typography textAlign="center">{project.info}</Typography>
         </CardContent>
-        <CardContent
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            alignItems: "center",
-            justifyItems: "center",
-            rowGap: 1,
-            width: "100%",
-          }}
-        >
-          {project.skills &&
-            project.skills.map((skill: any) => (
-              <Typography
-                key={skill}
-                variant="h6"
-                sx={{
-                  backgroundColor: colors.primary,
-                  width: "150px",
-                  borderRadius: 10,
-                }}
-                textAlign="center"
-              >
-                {skill}
-              </Typography>
+        <div style={{ width: "100%" }}>
+          <CardContent
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              alignItems: "flex-end",
+              justifyItems: "center",
+              rowGap: 1,
+              width: "100%",
+            }}
+          >
+            {project.skills.map((skill: any) => (
+              <Skill skill={skill} key={skill} />
             ))}
-        </CardContent>
-        <div
-          style={{ display: "flex", justifyContent: "center", width: "100%" }}
-        >
-          <Button onClick={() => window.open(project.url)} variant="contained">
-            See project
-          </Button>
+          </CardContent>
         </div>
-        {/* <CardActions>
-         
-        </CardActions> */}
       </Card>
     </Fade>
   );

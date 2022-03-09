@@ -2,8 +2,10 @@ import React from "react";
 import { Grid } from "@mui/material";
 import { projects } from "../data/projects";
 import { FadeInView, SectionContainer, ProjectCard } from "./index";
+import { useScreenSize } from "../hooks";
 
 export const Projects: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
+  const { matchesLG } = useScreenSize();
   return (
     <FadeInView checkItem={checkItem}>
       <SectionContainer label="Projects">
@@ -13,8 +15,6 @@ export const Projects: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           sx={{
             width: "100%",
             margin: "0 auto",
-            marginTop: "20px",
-            marginBottom: "20px",
             borderRadius: 10,
             gap: 1,
           }}
@@ -22,7 +22,7 @@ export const Projects: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           alignItems="center"
         >
           {projects.map((proj) => (
-            <Grid item md={3.5} key={proj.id}>
+            <Grid item md={matchesLG ? 6 : 3.5} key={proj.id}>
               <ProjectCard project={proj} i={proj.id} />
             </Grid>
           ))}

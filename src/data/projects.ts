@@ -21,7 +21,7 @@ export const projects: ProjectProps[] = [
   {
     id: 3,
     name: "Rick n' Morty",
-    info: `Front-end developed project, that lets the users browse through Rick n' Morty characters and see info about them.`,
+    info: `Front-end developed project, that lets the users browse through Rick n' Morty characters.`,
     url: "https://stefangorgevik.github.io/ricknmorty/",
     Icon: CalculateSharpIcon,
     skills: ["React", "Javascript", "CSS", "HTML"],
@@ -29,7 +29,7 @@ export const projects: ProjectProps[] = [
   {
     id: 4,
     name: "BodyBuildingMedia",
-    info: `Attempt for a bodybuilding social media website, where users can authenticate, post their diets and workouts.`,
+    info: `Bodybuilding social media website, where users can post their diets and workouts.`,
     url: "https://bodybuildingmedia.herokuapp.com",
     Icon: CalculateSharpIcon,
     skills: ["React", "Javascript", "CSS", "HTML"],
@@ -37,7 +37,7 @@ export const projects: ProjectProps[] = [
   {
     id: 5,
     name: "Expense Calculator",
-    info: `Full-stack developed project that serves as a calculator where you can keep track of your expenses and bought items.`,
+    info: `Full-stack developed project that serves as a calculator where you can keep track of your expenses.`,
     url: "https://stark-island-29614.herokuapp.com",
     Icon: CalculateSharpIcon,
     skills: ["React", "Node.js", "MongoDB", "HTML/CSS"],

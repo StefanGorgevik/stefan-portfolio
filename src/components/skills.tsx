@@ -11,10 +11,8 @@ export const Skills: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           item
           container
           sx={{
-            width: "90%",
+            width: "95%",
             margin: "0 auto",
-            marginTop: "20px",
-            marginBottom: "20px",
             borderRadius: 10,
             gap: 1,
           }}
