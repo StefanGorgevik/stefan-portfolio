@@ -5,51 +5,49 @@ export const projects: ProjectProps[] = [
   {
     id: 1,
     name: "Sit.Com",
-    info: "Front end project made in React JS, Material UI and React-query. For  It's purpose is to let the user explore new sitcoms.",
+    info: "This project is allowing users to authenticate, browse and choose their favorite sitcoms.",
     url: "https://sit-com.herokuapp.com/",
     Icon: CalculateSharpIcon,
+    skills: ["React", "Material UI", "React Query", "Typescript"],
   },
   {
     id: 2,
     name: "Budget Architect",
-    info: `Full-stack developed project, made with NodeJS and ReactJS. 
-        I used MongoDB as a database and mongoose for creating the model.  
-        For style, I used plain CSS, and for deployment, I used Heroku.`,
+    info: `Full-stack developed project, made to help user keep track of their expenses.`,
     url: "https://budgetarchitect.herokuapp.com/",
     Icon: CalculateSharpIcon,
+    skills: ["React", "Node.JS", "MongoDB", "HTML/CSS"],
   },
   {
     id: 3,
     name: "Rick n' Morty",
-    info: `Front-end developed project, created with ReactJS, using React Hooks. For the UI, I used plain HTML and
-        CSS. It is a small front-end project where I used an API and made a responsive web page.`,
+    info: `Front-end developed project, that lets the users browse through Rick n' Morty characters and see info about them.`,
     url: "https://stefangorgevik.github.io/ricknmorty/",
     Icon: CalculateSharpIcon,
+    skills: ["React", "Javascript", "CSS", "HTML"],
   },
   {
     id: 4,
     name: "BodyBuildingMedia",
-    info: `Attempt for a bodybuilding social media website, which is a full-stack developed project, 
-        created with ReactJS, Node.js, and MongoDB. `,
+    info: `Attempt for a bodybuilding social media website, where users can authenticate, post their diets and workouts.`,
     url: "https://bodybuildingmedia.herokuapp.com",
     Icon: CalculateSharpIcon,
+    skills: ["React", "Javascript", "CSS", "HTML"],
   },
   {
     id: 5,
     name: "Expense Calculator",
-    info: `Full-stack developed project, created with ReactJS, Node.js, and MongoDB. For the UI, I used plain HTML and
-        CSS. It is a calculator where you can keep track of your expenses and bought items. It was given as an ending project
-        by Semos Education.`,
+    info: `Full-stack developed project that serves as a calculator where you can keep track of your expenses and bought items.`,
     url: "https://stark-island-29614.herokuapp.com",
     Icon: CalculateSharpIcon,
+    skills: ["React", "Node.js", "MongoDB", "HTML/CSS"],
   },
   {
     id: 6,
     name: "Movie Database",
-    info: `Front-end developed project, created with ReactJS. For the UI, I used plain HTML and
-        CSS. It is a small front-end project where I used a prepared API, but the information was limited, 
-        so I worked with what I had.`,
+    info: `Front-end developed project that lets the users browse and search for movies.`,
     url: "https://stefangorgevik.github.io/movies/",
     Icon: CalculateSharpIcon,
+    skills: ["React", "Javascript", "HTML", "CSS"],
   },
 ];

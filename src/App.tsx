@@ -5,7 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 
 import { colors } from "./constants/colors";
 
-import { Layout } from "./components/layout";
+import { Layout } from "./components/index";
 
 const App: React.FC = () => {
   const theme: any = useMemo(

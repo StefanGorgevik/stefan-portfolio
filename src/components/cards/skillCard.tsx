@@ -15,7 +15,7 @@ export const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
       sx={{
         width: matchesSM ? " 150px" : "200px",
         height: matchesSM ? " 150px" : "200px",
-        background: colors.primary,
+        background: colors.secondary,
         borderRadius: 10,
       }}
     >

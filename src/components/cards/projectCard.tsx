@@ -1,6 +1,8 @@
 import {
   Card,
   CardContent,
+  CardActions,
+  Button,
   Typography,
   Fade,
   useMediaQuery,
@@ -9,7 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { ProjectProps } from "../../types";
 import { colors } from "../../constants";
-
+import { SkillCard } from "../index";
 interface ProjectCardProps {
   project: ProjectProps;
   i: number;
@@ -53,20 +55,21 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, i }) => {
     <Fade in={checked}>
       <Card
         sx={{
-          backgroundColor: colors.primary,
+          backgroundColor: colors.secondary,
           width: "100%",
           borderRadius: 10,
           padding: 1,
-          minHeight: matchesMD ? 250 : 330,
           display: "flex",
-          justifyContent: "space-around",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-between",
           cursor: "pointer",
           "&:hover": {
-            // opacity: 0.7,
             backgroundColor: "#ba9872",
             color: "#e6e2df",
           },
-          height: matchesMD ? "275px" : "400px",
+          minHeight: matchesMD ? 250 : 350,
+          height: matchesMD ? "275px" : "420px",
         }}
       >
         <CardContent>
@@ -75,9 +78,42 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, i }) => {
           </Typography>
           <Typography textAlign="center">{project.info}</Typography>
         </CardContent>
+        <CardContent
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            alignItems: "center",
+            justifyItems: "center",
+            rowGap: 1,
+            width: "100%",
+          }}
+        >
+          {project.skills &&
+            project.skills.map((skill: any) => (
+              <Typography
+                key={skill}
+                variant="h6"
+                sx={{
+                  backgroundColor: colors.primary,
+                  width: "150px",
+                  borderRadius: 10,
+                }}
+                textAlign="center"
+              >
+                {skill}
+              </Typography>
+            ))}
+        </CardContent>
+        <div
+          style={{ display: "flex", justifyContent: "center", width: "100%" }}
+        >
+          <Button onClick={() => window.open(project.url)} variant="contained">
+            See project
+          </Button>
+        </div>
         {/* <CardActions>
-        <Button variant="contained">See project</Button>
-      </CardActions> */}
+         
+        </CardActions> */}
       </Card>
     </Fade>
   );

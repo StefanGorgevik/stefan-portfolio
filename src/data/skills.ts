@@ -6,8 +6,9 @@ import Redux from "../assets/images/skillIcons/redux.svg";
 import CSS from "../assets/images/skillIcons/css.svg";
 import HTML from "../assets/images/skillIcons/html.svg";
 import MUI from "../assets/images/skillIcons/mui.svg";
-import Node from "../assets/images/skillIcons/mui.svg";
-// import JavascriptIcon from "@mui/icons-material/Javascript";
+import Node from "../assets/images/skillIcons/node.svg";
+import JS from "../assets/images/skillIcons/js.svg";
+
 export const skills: SkillProps[] = [
   { id: 1, skill: "React", image: ReactPicture },
   {
@@ -16,7 +17,7 @@ export const skills: SkillProps[] = [
 
     image: ReactNative,
   },
-  { id: 3, skill: "Javascript", image: ReactNative },
+  { id: 3, skill: "Javascript", image: JS },
   { id: 4, skill: "Typescript", image: ReactPicture },
   { id: 5, skill: "Material UI", image: MUI },
   { id: 6, skill: "Redux", image: Redux },

@@ -15,7 +15,7 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
       minWidth: "300px",
       width: "100%",
       height: "260px",
-      background: colors.primary,
+      background: colors.secondary,
       borderRadius: 10,
       paddingBottom: 10,
     }}
@@ -50,9 +50,10 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
     >
       {experience.skills.map((skill: string) => (
         <Typography
+          key={skill}
           variant="h6"
           sx={{
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
             width: "150px",
             borderRadius: 10,
           }}

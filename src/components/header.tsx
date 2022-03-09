@@ -6,29 +6,26 @@ import Toolbar from "@mui/material/Toolbar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { colors } from "../constants";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { MobileMenu } from "./ui/mobileMenu";
 import { TabValues } from "../types/componentTypes";
 
-const tabs: string[] = [
+export const tabs: string[] = [
   "Home",
   "Projects",
   "Skills",
   "Experience",
   "Education",
-  "Certification",
 ];
 interface HeaderProps {
   tabValue: TabValues;
   onTabChange: (event: React.SyntheticEvent, tab: TabValues) => unknown;
+  tabName: string;
 }
 
 export const HeaderTabs: React.FC<HeaderProps> = ({
   tabValue,
   onTabChange,
+  tabName,
 }) => {
-  console.log("tabValues", tabValue);
   return (
     <Tabs
       value={tabValue}
@@ -39,24 +36,18 @@ export const HeaderTabs: React.FC<HeaderProps> = ({
       aria-label="scrollable force tabs example"
       sx={{
         height: 50,
-        // overflowX: "scroll",
-        // display: "flex",
-        // flexDirection: "column",
-        // width: "400px",
-        // ".MuiTabs-flexContainer": {
-        //   flexDirection: "column",
-        //   justifyContent: "flex-start",
-        //   alignItems: "flex-start",
-        // },
-        // backgroundColor: colors.primary,
       }}
     >
       {tabs.map((tab: string, i: number) => (
         <Tab
           label={tab}
           value={i}
+          key={tab}
           sx={{
             borderRadius: 10,
+            // backgroundColor:
+            //   tab === tabName ? colors.secondary : colors.primary,
+            // color: tab === tabName ? colors.primary : colors.secondary,
             backgroundColor: tabValue === i ? colors.secondary : colors.primary,
             color: tabValue === i ? colors.primary : colors.secondary,
           }}
@@ -66,9 +57,11 @@ export const HeaderTabs: React.FC<HeaderProps> = ({
   );
 };
 
-export const Header: React.FC<HeaderProps> = ({ tabValue, onTabChange }) => {
-  const theme = useTheme();
-  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+export const Header: React.FC<HeaderProps> = ({
+  tabValue,
+  onTabChange,
+  tabName,
+}) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -78,11 +71,11 @@ export const Header: React.FC<HeaderProps> = ({ tabValue, onTabChange }) => {
         }}
       >
         <Toolbar sx={{ width: "100%" }}>
-          {/* {!matchesMD ? ( */}
-          <HeaderTabs tabValue={tabValue} onTabChange={onTabChange} />
-          {/* ) : (
-            <MobileMenu tabValue={tabValue} onTabChange={onTabChange} />
-          )} */}
+          <HeaderTabs
+            tabValue={tabValue}
+            onTabChange={onTabChange}
+            tabName={tabName}
+          />
         </Toolbar>
       </AppBar>
     </Box>
