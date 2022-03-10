@@ -84,10 +84,8 @@ export const Education: React.FC = () => {
         item
         container
         sx={{
-          height: "50vh",
           margin: "0 auto",
           marginTop: "20px",
-          marginBottom: "50px",
           borderRadius: 10,
           gap: matchesLG ? 1 : 3,
           display: matchesLG ? "flex" : "grid",

@@ -159,7 +159,6 @@ export const Layout: React.FC = () => {
             alignItems: "center",
             justifyContent: "center",
             rowGap: "100px",
-            paddingBottom: "50px",
           }}
           ref={mainRef}
         >
