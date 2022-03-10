@@ -25,16 +25,17 @@ export const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
+          padding: matchesSM ? 0 : "auto",
         }}
       >
-        <Typography variant="body1">{skill.skill}</Typography>
+        <Typography variant="overline">{skill.skill}</Typography>
         {skill.image && (
           <img
             src={skill.image}
             alt="skill"
             style={{
-              width: matchesSM ? 100 : 115,
-              height: matchesSM ? 100 : 115,
+              width: matchesSM ? 90 : 115,
+              height: matchesSM ? 90 : 115,
             }}
           />
         )}

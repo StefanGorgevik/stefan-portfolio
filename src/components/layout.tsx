@@ -22,14 +22,7 @@ const getClosest = (off1: number, off2: number) => {
 export const Layout: React.FC = () => {
   const [tabValue, setTabValue] = useState<TabValues>(0);
   const [tabName, setTabName] = useState("Home");
-  const [showProjects, setShowProjects] = useState(false);
-  const handleChange = (event: React.SyntheticEvent, newValue: TabValues) => {
-    if (newValue === 1) {
-      setShowProjects(true);
-    }
-    setTabValue(newValue);
-    setTabName(tabs[newValue]);
-  };
+  const [shouldScroll, setShouldScroll] = useState(true);
 
   const { matchesLG } = useScreenSize();
 
@@ -45,26 +38,35 @@ export const Layout: React.FC = () => {
   const isExperienceVisible = useOnScreen(experienceRef);
   const isEducationVisible = useOnScreen(educationRef);
 
+  const handleChange = (event: React.SyntheticEvent, newValue: TabValues) => {
+    setShouldScroll(true);
+    setTabValue(newValue);
+    setTabName(tabs[newValue]);
+  };
+
   useEffect(() => {
-    if (isProjectsVisible) {
+    if (isProjectsVisible && !isHomeVisible) {
       if (projectsRef.current && skillsRef.current) {
         const closest = getClosest(
           projectsRef.current.offsetTop,
           skillsRef.current.offsetTop
         );
         if (closest === projectsRef.current.offsetTop) {
+          setShouldScroll(false);
           setTabName("Projects");
-          setShowProjects(true);
+          setTabValue(1);
         }
       }
-    } else if (isSkillsVisible) {
+    } else if (isSkillsVisible && !isProjectsVisible) {
       if (skillsRef.current && experienceRef.current) {
         const closest = getClosest(
           skillsRef.current.offsetTop,
           experienceRef.current.offsetTop
         );
         if (closest === skillsRef.current.offsetTop) {
+          setShouldScroll(false);
           setTabName("Skills");
+          setTabValue(2);
         }
       }
     } else if (isExperienceVisible && isEducationVisible) {
@@ -74,7 +76,9 @@ export const Layout: React.FC = () => {
           experienceRef.current.offsetTop
         );
         if (closest === experienceRef.current.offsetTop) {
+          setShouldScroll(false);
           setTabName("Experience");
+          setTabValue(3);
         }
       }
     } else if (isEducationVisible && !isExperienceVisible) {
@@ -89,20 +93,15 @@ export const Layout: React.FC = () => {
           experienceRef.current.offsetTop
         );
         if (closest === educationRef.current.offsetTop) {
+          setShouldScroll(false);
           setTabName("Education");
+          setTabValue(4);
         }
       }
-    } else if (isHomeVisible) {
-      if (homeRef && homeRef.current && projectsRef && projectsRef.current) {
-        let closest = getClosest(
-          homeRef.current.offsetTop,
-          projectsRef.current.offsetTop
-        );
-        if (closest === homeRef.current.offsetTop) {
-          setTabName("Home");
-          setShowProjects(false);
-        }
-      }
+    } else if (isHomeVisible && isProjectsVisible) {
+      setShouldScroll(false);
+      setTabName("Home");
+      setTabValue(0);
     }
   }, [
     isProjectsVisible,
@@ -116,7 +115,6 @@ export const Layout: React.FC = () => {
   useEffect(() => {
     let offset: number = 0;
     if (tabValue === 1 && projectsRef && projectsRef.current) {
-      setShowProjects(true);
       offset = projectsRef?.current?.offsetTop;
     } else if (tabValue === 2 && skillsRef && skillsRef.current) {
       offset = skillsRef?.current?.offsetTop;
@@ -127,17 +125,18 @@ export const Layout: React.FC = () => {
     } else if (tabValue === 0 && homeRef && homeRef.current) {
       offset = homeRef?.current?.offsetTop;
     }
-    scroll.scrollTo(offset - 70);
-  }, [tabValue, projectsRef, skillsRef, experienceRef, educationRef, homeRef]);
-
-  useEffect(() => {
-    if (isHomeVisible && isProjectsVisible && window.pageYOffset < 300) {
-      setTabName("Home");
-      setShowProjects(false);
-    } else if (isHomeVisible && isProjectsVisible && window.pageYOffset > 300) {
-      setShowProjects(true);
+    if (shouldScroll) {
+      scroll.scrollTo(offset - 70);
     }
-  }, [isHomeVisible, isProjectsVisible]);
+  }, [
+    tabValue,
+    projectsRef,
+    skillsRef,
+    experienceRef,
+    educationRef,
+    homeRef,
+    shouldScroll,
+  ]);
 
   return (
     <Grid
@@ -153,7 +152,7 @@ export const Layout: React.FC = () => {
       <Grid container sx={{ marginTop: "70px", flexDirection: "column" }}>
         <div
           style={{
-            width: matchesLG ? "95%" : "85%",
+            width: matchesLG ? "95%" : "80%",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
@@ -169,7 +168,7 @@ export const Layout: React.FC = () => {
           </div>
 
           <div ref={projectsRef}>
-            <Projects checkItem={isProjectsVisible && showProjects} />
+            <Projects checkItem={isProjectsVisible} />
           </div>
           <div ref={skillsRef}>
             <Skills checkItem={isSkillsVisible} />
@@ -177,8 +176,8 @@ export const Layout: React.FC = () => {
           <div ref={experienceRef} style={{ width: "100%" }}>
             <Experience checkItem={isExperienceVisible} />
           </div>
-          <div ref={educationRef} style={{ width: "100%" }}>
-            <Education checkItem={isEducationVisible} />
+          <div ref={educationRef} style={{ width: "100%", marginBottom: 20 }}>
+            <Education />
           </div>
         </div>
       </Grid>

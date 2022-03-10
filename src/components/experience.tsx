@@ -15,7 +15,7 @@ export const Experience: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           item
           container
           sx={{
-            width: matchesLG ? "100%" : "94%",
+            width: matchesLG ? "100%" : "100%",
             margin: "0 auto",
             borderRadius: 10,
             gap: matchesLG ? 2 : 0.2,

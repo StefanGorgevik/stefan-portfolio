@@ -15,12 +15,9 @@ export const Home: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
         container
         sx={{
           width: matchesLG ? "90%" : "70%",
-          height: matchesLG ? "100%" : "65vh",
           margin: "0 auto",
+          marginTop: matchesLG ? "5px" : "20px",
           background: colors.primary,
-          marginTop: "20px",
-          paddingTop: matchesLG ? "10px" : "",
-          marginBottom: matchesLG ? 0 : 3,
           borderRadius: 10,
         }}
       >

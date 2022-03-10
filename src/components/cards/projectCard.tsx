@@ -47,6 +47,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, i }) => {
         sx={{
           backgroundColor: colors.secondary,
           width: "100%",
+          minHeight: "350px",
           borderRadius: 10,
           padding: 1,
           display: "flex",

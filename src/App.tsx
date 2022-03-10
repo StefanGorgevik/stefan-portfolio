@@ -25,7 +25,7 @@ const App: React.FC = () => {
           fontSize: 18,
           fontFamily: `"Share Tech", "serif"`,
           overline: {
-            fontSize: "2rem",
+            fontSize: "1rem",
             fontWeight: "bold",
             opacity: 0.7,
           },

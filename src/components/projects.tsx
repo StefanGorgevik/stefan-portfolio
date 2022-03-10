@@ -13,12 +13,11 @@ export const Projects: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           item
           container
           sx={{
-            width: "100%",
             margin: "0 auto",
             borderRadius: 10,
             gap: 1,
           }}
-          justifyContent="space-evenly"
+          justifyContent={matchesLG ? "center" : "space-between"}
           alignItems="center"
         >
           {projects.map((proj) => (
