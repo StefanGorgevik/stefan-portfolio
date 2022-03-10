@@ -12,8 +12,7 @@ export const tabs: string[] = [
   "Home",
   "Projects",
   "Skills",
-  "Experience",
-  "Education",
+  "Experience/Education",
 ];
 interface HeaderProps {
   tabValue: TabValues;

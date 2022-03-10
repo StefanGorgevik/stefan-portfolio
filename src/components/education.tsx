@@ -86,6 +86,7 @@ export const Education: React.FC = () => {
         sx={{
           margin: "0 auto",
           marginTop: "20px",
+          height: "40vh",
           borderRadius: 10,
           gap: matchesLG ? 1 : 3,
           display: matchesLG ? "flex" : "grid",
