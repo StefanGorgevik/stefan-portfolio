@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({
   tabName,
 }) => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, marginBottom: "70px" }}>
       <AppBar
         position="fixed"
         sx={{

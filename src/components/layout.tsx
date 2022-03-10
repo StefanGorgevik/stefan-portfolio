@@ -22,121 +22,13 @@ const getClosest = (off1: number, off2: number) => {
 export const Layout: React.FC = () => {
   const [tabValue, setTabValue] = useState<TabValues>(0);
   const [tabName, setTabName] = useState("Home");
-  const [shouldScroll, setShouldScroll] = useState(true);
 
   const { matchesLG } = useScreenSize();
 
-  const mainRef = useRef<HTMLInputElement>(null);
-  const homeRef = useRef<HTMLInputElement>(null);
-  const projectsRef = useRef<HTMLInputElement>(null);
-  const skillsRef = useRef<HTMLInputElement>(null);
-  const experienceRef = useRef<HTMLInputElement>(null);
-  const educationRef = useRef<HTMLInputElement>(null);
-  const isHomeVisible = useOnScreen(homeRef);
-  const isProjectsVisible = useOnScreen(projectsRef);
-  const isSkillsVisible = useOnScreen(skillsRef);
-  const isExperienceVisible = useOnScreen(experienceRef);
-  const isEducationVisible = useOnScreen(educationRef);
-
   const handleChange = (event: React.SyntheticEvent, newValue: TabValues) => {
-    setShouldScroll(true);
     setTabValue(newValue);
     setTabName(tabs[newValue]);
   };
-
-  useEffect(() => {
-    if (isProjectsVisible && !isHomeVisible) {
-      if (projectsRef.current && skillsRef.current) {
-        const closest = getClosest(
-          projectsRef.current.offsetTop,
-          skillsRef.current.offsetTop
-        );
-        if (closest === projectsRef.current.offsetTop) {
-          setShouldScroll(false);
-          setTabName("Projects");
-          setTabValue(1);
-        }
-      }
-    } else if (isSkillsVisible && !isProjectsVisible) {
-      if (skillsRef.current && experienceRef.current) {
-        const closest = getClosest(
-          skillsRef.current.offsetTop,
-          experienceRef.current.offsetTop
-        );
-        if (closest === skillsRef.current.offsetTop) {
-          setShouldScroll(false);
-          setTabName("Skills");
-          setTabValue(2);
-        }
-      }
-    } else if (isExperienceVisible && isEducationVisible) {
-      if (educationRef.current && experienceRef.current) {
-        const closest = getClosest(
-          educationRef.current.offsetTop,
-          experienceRef.current.offsetTop
-        );
-        if (closest === experienceRef.current.offsetTop) {
-          setShouldScroll(false);
-          setTabName("Experience");
-          setTabValue(3);
-        }
-      }
-    } else if (isEducationVisible && !isExperienceVisible) {
-      if (
-        educationRef &&
-        educationRef.current &&
-        experienceRef &&
-        experienceRef.current
-      ) {
-        let closest = getClosest(
-          educationRef.current.offsetTop,
-          experienceRef.current.offsetTop
-        );
-        if (closest === educationRef.current.offsetTop) {
-          setShouldScroll(false);
-          setTabName("Education");
-          setTabValue(4);
-        }
-      }
-    } else if (isHomeVisible && isProjectsVisible) {
-      setShouldScroll(false);
-      setTabName("Home");
-      setTabValue(0);
-    }
-  }, [
-    isProjectsVisible,
-    isSkillsVisible,
-    isExperienceVisible,
-    isEducationVisible,
-    isHomeVisible,
-    tabValue,
-  ]);
-
-  useEffect(() => {
-    let offset: number = 0;
-    if (tabValue === 1 && projectsRef && projectsRef.current) {
-      offset = projectsRef?.current?.offsetTop;
-    } else if (tabValue === 2 && skillsRef && skillsRef.current) {
-      offset = skillsRef?.current?.offsetTop;
-    } else if (tabValue === 3 && experienceRef && experienceRef.current) {
-      offset = experienceRef?.current?.offsetTop;
-    } else if (tabValue === 4 && educationRef && educationRef.current) {
-      offset = educationRef?.current?.offsetTop;
-    } else if (tabValue === 0 && homeRef && homeRef.current) {
-      offset = homeRef?.current?.offsetTop;
-    }
-    if (shouldScroll) {
-      scroll.scrollTo(offset - 70);
-    }
-  }, [
-    tabValue,
-    projectsRef,
-    skillsRef,
-    experienceRef,
-    educationRef,
-    homeRef,
-    shouldScroll,
-  ]);
 
   return (
     <Grid
@@ -149,8 +41,16 @@ export const Layout: React.FC = () => {
         onTabChange={handleChange}
         tabName={tabName}
       />
-      <Grid container sx={{ marginTop: "70px", flexDirection: "column" }}>
-        <div
+      <Grid
+        container
+        sx={{
+          marginTop: "70px",
+          width: matchesLG ? "95%" : "80%",
+          margin: "0 auto",
+          height: "100vh",
+        }}
+      >
+        {/* <div
           style={{
             width: matchesLG ? "95%" : "80%",
             margin: "0 auto",
@@ -158,28 +58,13 @@ export const Layout: React.FC = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            rowGap: "100px",
-            paddingBottom: "50px",
           }}
-          ref={mainRef}
-        >
-          <div ref={homeRef}>
-            <Home checkItem={isHomeVisible} />
-          </div>
-
-          <div ref={projectsRef}>
-            <Projects checkItem={isProjectsVisible} />
-          </div>
-          <div ref={skillsRef}>
-            <Skills checkItem={isSkillsVisible} />
-          </div>
-          <div ref={experienceRef} style={{ width: "100%" }}>
-            <Experience checkItem={isExperienceVisible} />
-          </div>
-          <div ref={educationRef} style={{ width: "100%", marginBottom: 20 }}>
-            <Education />
-          </div>
-        </div>
+        > */}
+        {tabValue === 0 && <Home checkItem={tabValue === 0} />}
+        {tabValue === 1 && <Projects checkItem={tabValue === 1} />}
+        {tabValue === 2 && <Skills checkItem={tabValue === 2} />}
+        {tabValue === 3 && <Experience checkItem={tabValue === 3} />}
+        {tabValue === 4 && <Education checkItem={tabValue === 4} />}
       </Grid>
     </Grid>
   );

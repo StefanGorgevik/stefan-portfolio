@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Collapse, Grid, Typography } from "@mui/material";
 import { colors } from "../constants";
 import { CardAvatar } from "./cards/cardAvatar";
 import { useScreenSize } from "../hooks/breakpoints";
@@ -68,7 +68,7 @@ export const Home: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
               creative ability. Constantly trying to improve my skills and bring
               <strong style={{ paddingLeft: "5px" }}>
                 scallable, fast and responsive
-              </strong>{" "}
+              </strong>
               websites.
             </Typography>
           </Grid>
