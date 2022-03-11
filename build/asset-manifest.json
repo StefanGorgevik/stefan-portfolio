@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b52b57cf.css",
-    "main.js": "/static/js/main.ef3036ad.js",
+    "main.js": "/static/js/main.f6831697.js",
     "static/js/787.a2a7b0be.chunk.js": "/static/js/787.a2a7b0be.chunk.js",
     "static/media/ReactCertificate.jpg": "/static/media/ReactCertificate.8ca35776e667137c2bce.jpg",
     "static/media/ReactNativeCertificate2.jpg": "/static/media/ReactNativeCertificate2.0c238a76ba8b665bff3e.jpg",
@@ -15,15 +15,16 @@
     "static/media/node.svg": "/static/media/node.b7d2308b16bd82b67987d0d1682f8e6b.svg",
     "static/media/js.svg": "/static/media/js.aea239beb2f21e14ecb5b9447dab17d2.svg",
     "index.html": "/index.html",
+    "static/media/ts.svg": "/static/media/ts.32da652b7325a8189f4f9c12ffd06650.svg",
     "static/media/mui.svg": "/static/media/mui.60a0ece058ff0f20c1815cf138a56e35.svg",
     "static/media/html.svg": "/static/media/html.ba73db6aec8147f18915af47c80bf762.svg",
     "static/media/css.svg": "/static/media/css.958c6f5a082a87ef4e4293118067ac7a.svg",
     "main.b52b57cf.css.map": "/static/css/main.b52b57cf.css.map",
-    "main.ef3036ad.js.map": "/static/js/main.ef3036ad.js.map",
+    "main.f6831697.js.map": "/static/js/main.f6831697.js.map",
     "787.a2a7b0be.chunk.js.map": "/static/js/787.a2a7b0be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b52b57cf.css",
-    "static/js/main.ef3036ad.js"
+    "static/js/main.f6831697.js"
   ]
 }
