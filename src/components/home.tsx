@@ -58,7 +58,7 @@ export const Home: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
               experiences and is ready to demonstrate a strong work ethic and
               creative ability. Constantly trying to improve my skills and bring
               <strong style={{ paddingLeft: "5px" }}>
-                scallable, fast and responsive
+                scallable, fast and responsive{" "}
               </strong>
               websites.
             </Typography>
