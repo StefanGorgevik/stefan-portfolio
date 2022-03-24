@@ -6,7 +6,7 @@ import { useScreenSize } from "../hooks/breakpoints";
 import { FadeInView } from "./index";
 
 export const Home: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
-  const { matchesLG } = useScreenSize();
+  const { matchesLG, matchesMD } = useScreenSize();
 
   return (
     <FadeInView checkItem={checkItem}>
@@ -19,6 +19,7 @@ export const Home: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           marginTop: matchesLG ? "5px" : "20px",
           background: colors.primary,
           borderRadius: 10,
+          justifyContent: matchesMD ? "center" : "space-between",
         }}
       >
         <Grid item container md={5} alignItems="center" justifyContent="center">
@@ -32,7 +33,7 @@ export const Home: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           justifyContent="center"
           flexDirection="column"
         >
-          <Grid item>
+          <Grid item sx={{ marginTop: matchesMD ? "2em" : "0" }}>
             <Typography
               textAlign="center"
               variant="h4"
@@ -58,7 +59,7 @@ export const Home: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
               creative ability. Constantly trying to improve my skills and bring
               <strong style={{ paddingLeft: "5px" }}>
                 scallable, fast and responsive
-              </strong>{" "}
+              </strong>
               websites.
             </Typography>
           </Grid>
