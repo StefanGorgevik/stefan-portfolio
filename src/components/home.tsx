@@ -32,20 +32,10 @@ export const Home: React.FC<{ checkItem: boolean }> = ({ checkItem }) => {
           justifyContent="center"
           flexDirection="column"
         >
-          <Grid item sx={{ marginTop: matchesLG ? 3 : "0" }}>
-            <Typography
-              textAlign="center"
-              variant={matchesLG ? "h4" : "h2"}
-              color="text.secondary"
-              gutterBottom
-            >
-              Stefan Gorgevik
-            </Typography>
-          </Grid>
           <Grid item>
             <Typography
               textAlign="center"
-              variant="h5"
+              variant="h4"
               color="text.secondary"
               gutterBottom
             >
