@@ -90,7 +90,7 @@ export const Education: React.FC = () => {
           borderRadius: 10,
           gap: matchesLG ? 1 : 3,
           display: matchesLG ? "flex" : "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
+          gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
         }}
         justifyContent="space-evenly"
       >

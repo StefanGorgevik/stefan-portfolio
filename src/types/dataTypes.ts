@@ -26,4 +26,5 @@ export interface CertificateProps {
   id: number;
   title: string;
   img: string;
+  url: string;
 }

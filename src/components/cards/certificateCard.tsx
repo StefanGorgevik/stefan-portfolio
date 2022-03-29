@@ -6,10 +6,12 @@ export const CertificateCard: React.FC<{ certificate: CertificateProps }> = ({
   certificate,
 }) => (
   <Card
+    onClick={() => window.open(certificate.url)}
     sx={{
       minWidth: "100%",
       width: "100%",
       borderRadius: 10,
+      cursor: "pointer",
     }}
   >
     <img
