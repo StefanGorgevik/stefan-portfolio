@@ -95,7 +95,7 @@ export const Layout: React.FC = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            rowGap: "50px",
+            rowGap: "100px",
           }}
           ref={mainRef}
         >

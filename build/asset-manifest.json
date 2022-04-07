@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b52b57cf.css",
-    "main.js": "/static/js/main.5ae26aca.js",
+    "main.js": "/static/js/main.f1849eae.js",
     "static/js/787.a2a7b0be.chunk.js": "/static/js/787.a2a7b0be.chunk.js",
     "static/media/ReactCertificate.jpg": "/static/media/ReactCertificate.8ca35776e667137c2bce.jpg",
     "static/media/ReactNativeCertificate2.jpg": "/static/media/ReactNativeCertificate2.0c238a76ba8b665bff3e.jpg",
@@ -21,11 +21,11 @@
     "static/media/html.svg": "/static/media/html.ba73db6aec8147f18915af47c80bf762.svg",
     "static/media/css.svg": "/static/media/css.958c6f5a082a87ef4e4293118067ac7a.svg",
     "main.b52b57cf.css.map": "/static/css/main.b52b57cf.css.map",
-    "main.5ae26aca.js.map": "/static/js/main.5ae26aca.js.map",
+    "main.f1849eae.js.map": "/static/js/main.f1849eae.js.map",
     "787.a2a7b0be.chunk.js.map": "/static/js/787.a2a7b0be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b52b57cf.css",
-    "static/js/main.5ae26aca.js"
+    "static/js/main.f1849eae.js"
   ]
 }
